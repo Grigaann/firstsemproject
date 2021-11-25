@@ -1,4 +1,5 @@
 reader_file = "./Ressources/readers.txt"
+#Reader profiles interface
 
 def add_reader():
 #different available choices
