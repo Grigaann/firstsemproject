@@ -10,7 +10,7 @@ if __name__ == "__main__":
           'If you want to watch our recommendations, press 2.\n'))
     #add_reader()
 
-    if response == 0: #shows reader profiles
+    if response == 0: #shows reader profiles with all combined part1
         pass
         #reader_profile()
     elif response == 1:  #shows all the books avaible
