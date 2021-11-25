@@ -1,23 +1,17 @@
-from Part2 import display_books
-
+reader_file = "./Ressources/readers.txt"
 
 def add_reader():
-
-    #Add the sign-in user infos
-
-    #different available choices
+#different available choices
     genders = ["", "man", "woman", "don't want to specify"]
     ages = ["", "18 or less", "between 18 and 25", "more than 25"]
     readstyles = ["", "Sci-fi", "Biography", "Horror", "Romance", "Fable", "History", "Comedy"]
 
-    readersfile = open("./Ressources/readers.txt", "a")
-    book = open("./Ressources/books.txt","r")
-    booksread = open("./Ressources/booksread.txt","a")
+    readersfile = open(reader_file, "a")
 
 
     pseudo = str(input("What is your pseudonym ?\n"))
 
-    #asking for the gender of the new user
+#asking for the gender of the new user
     for g in range(1, len(genders)):
         print("Enter", g, "for :", genders[g])
     entier = False
@@ -30,7 +24,7 @@ def add_reader():
         except:
             print("Please enter a number between 1 and " + str(len(genders) - 1) + ".")
 
-    # asking for the age of the new user
+# asking for the age of the new user
     for a in range(1, len(ages)):
         print("Enter", a, "if you are", ages[a])
     entier = False
@@ -43,7 +37,7 @@ def add_reader():
         except:
             print("Please enter a number between 1 and " + str(len(ages) - 1) + ".")
 
-    # asking for the reading style of the new user
+# asking for the reading style of the new user
     for r in range(1, len(readstyles)):
         print(r, ":", readstyles[r])
     entier = False
@@ -56,35 +50,17 @@ def add_reader():
         except:
             print("Please enter a number between 1 and " + str(len(readstyles) - 1) + ".")
 
-
-    #Add the books the newby already read
-
-
-    display_books()
-    users_books = ""
-    book_nb = 1
-
-    while book_nb!=0:
-        book_nb = int(input("Enter the number corresponding to a book you have read or 0 if you are done :\n"))
-        while sum(1 for line in open("./Ressources/books.txt")) < book_nb or book_nb < 0:
-            book_nb = int(input("Enter a valid answer :\n"))
-        if book_nb!=0 and str(book_nb) not in users_books:
-            users_books += (","+str(book_nb))
-    booksread.write(pseudo + users_books + "\n")
-    #writing in the readers.txt
+#writing in the readers.txt
     readersfile.write(pseudo + "," + str(gender) + "," + str(age) + "," + str(readstyle) + "\n")
     readersfile.close()
-
-    return
-
+#later usage?
+    return pseudo + "," + genders[gender] + "," + ages[age] + "," + readstyles[readstyle]+"\n"
 
 def display_reader():
     return
 
-
 def edit_reader():
     return
-
 
 def delete_reader():
     return
