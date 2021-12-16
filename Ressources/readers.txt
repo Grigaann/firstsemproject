@@ -1,8 +1,9 @@
 ZSTRFG,3,2,7
-lk,m;,3,2,2
-hg,nvb,2,3,1
 rrfdg,2,2,2
 jkk,2,2,2
-fds,2,3,4
+fds,2,1,4
+
 Ylan,1,2,1
-Ylna,2,1,5
+jonl,2,3,2
+Jean-Paul,2,2,2
+ergf,2,2,5
