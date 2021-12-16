@@ -2,6 +2,9 @@ from Part1 import *
 from Part2 import *
 from Part3 import *
 
+matrix_creation()
+rate_book()
+
 if __name__ == "__main__":
 
     w = int(input("Hello, what do you want to do?\nEnter 1 to visit readers profile\nEnter 2 to visit the book depository\nEnter 3 to get reading recommandations\n"))
