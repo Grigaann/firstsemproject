@@ -1,4 +1,6 @@
 reader_file = "./Ressources/readers.txt"
+from Part2 import display_books
+
 #different available choices
 genders = ["", "man", "woman", "don't want to specify"]
 ages = ["", "18 or less", "between 18 and 25", "more than 25"]
@@ -46,10 +48,25 @@ def add_reader():
             except:
                 print("Please enter a number between 1 and " + str(len(readstyles) - 1) + ".")
 
+        nb_stored_books = display_books()
+        books_lus = []
+        deja_lu = -1
+        while deja_lu != 0:
+            deja_lu = int(input("Enter the number corresponding to a book you have read or 0 if you are done.\n"))
+            while deja_lu < 0 or deja_lu > nb_stored_books:
+                deja_lu = int(input("Please enter a valid number or 0 if you are done.\n"))
+            if deja_lu != 0 and deja_lu not in books_lus:
+                books_lus.append(str(deja_lu))
+        print(books_lus)
+
         #writing in the readers.txt
         readersfile = open(reader_file, "a")
         readersfile.write(pseudo + "," + str(gender) + "," + str(age) + "," + str(readstyle) + "\n")
         readersfile.close()
+        #writing in the booksread.txt
+        booksreadfile = open("./Ressources/booksread.txt","a")
+        booksreadfile.write(pseudo + "," + ",".join(books_lus)+"\n")
+        booksreadfile.close()
 
         display = pseudo + "'s profile was successfully added."
     return display
@@ -184,6 +201,8 @@ def delete_reader(reader):
     else:
         display = "Error : this profile does not exist."
     return display
+
+#=======================================================================================================================
 
 def DisplayAllReaders():
     with open(reader_file) as file:

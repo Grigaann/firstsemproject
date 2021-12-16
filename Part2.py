@@ -3,11 +3,13 @@ books_file = "./Ressources/books.txt"
 
 
 def display_books():
+    line_cpt = 0
     booksfile = open(books_file, "r")
     for i in booksfile.readlines():
         print(i.rstrip('\n'))
+        line_cpt += 1
     booksfile.close()
-    return
+    return line_cpt
 
 #=======================================================================================================================
 

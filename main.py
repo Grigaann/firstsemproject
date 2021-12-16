@@ -3,6 +3,7 @@ from Part2 import *
 from Part3 import *
 
 if __name__ == "__main__":
+
     w = int(input("Hello, what do you want to do?\nEnter 1 to visit readers profile\nEnter 2 to visit the book depository\nEnter 3 to get reading recommandations\n"))
     while w<1 or w>3:
         # principal display with 2 main categories
@@ -30,7 +31,7 @@ if __name__ == "__main__":
         elif n==2: #showing all profiles
             n = DisplayAllReaders()
             print(n)
-            print(display_reader(input('Which profile do you want to see ?\n')))
+            display_reader(input('Which profile do you want to see ?\n'))
 
         elif n==3:
             n = DisplayAllReaders()
