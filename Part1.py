@@ -10,41 +10,51 @@ def add_reader():
     while "," in pseudo:
         pseudo = str(input("What is your pseudonym ?\n"))
 
-    #asking for the gender of the new user
-    for g in range(1, len(genders)):
-        print("Enter", g, "for :", genders[g])
-    gender = -1
-    while gender > len(genders) - 1 or gender <= 0:
-        try:
-            gender = int(input("What is your gender ?\n"))
-        except:
-            print("Please enter a number between 1 and " + str(len(genders) - 1) + ".")
+    display = ""
+    for ligne in open(reader_file,"r").readlines():
+        if pseudo == ligne.split(",")[0]:
+            display = "This user is already registered."
 
-    # asking for the age of the new user
-    for a in range(1, len(ages)):
-        print("Enter", a, "if you are", ages[a])
-    age = -1
-    while age > len(ages) - 1 or age <= 0:
-        try:
-            age = int(input("How old are you ?\n"))
-        except:
-            print("Please enter a number between 1 and " + str(len(ages) - 1) + ".")
+    if display == "":
+        #asking for the gender of the new user
+        for g in range(1, len(genders)):
+            print("Enter", g, "for :", genders[g])
+        gender = -1
+        while gender > len(genders) - 1 or gender <= 0:
+            try:
+                gender = int(input("What is your gender ?\n"))
+            except:
+                print("Please enter a number between 1 and " + str(len(genders) - 1) + ".")
 
-    # asking for the reading style of the new user
-    for r in range(1, len(readstyles)):
-        print(r, ":", readstyles[r])
-    readstyle = -1
-    while readstyle > len(readstyles) - 1 or readstyle <= 0:
-        try:
-            readstyle = int(input("What reading style do you prefer (enter the corresponding number) ?\n"))
-        except:
-            print("Please enter a number between 1 and " + str(len(readstyles) - 1) + ".")
+        # asking for the age of the new user
+        for a in range(1, len(ages)):
+            print("Enter", a, "if you are", ages[a])
+        age = -1
+        while age > len(ages) - 1 or age <= 0:
+            try:
+                age = int(input("How old are you ?\n"))
+            except:
+                print("Please enter a number between 1 and " + str(len(ages) - 1) + ".")
 
-    #writing in the readers.txt
-    readersfile = open(reader_file, "a")
-    readersfile.write(pseudo + "," + str(gender) + "," + str(age) + "," + str(readstyle) + "\n")
-    readersfile.close()
-    return pseudo+"'s profile was successfully added."
+        # asking for the reading style of the new user
+        for r in range(1, len(readstyles)):
+            print(r, ":", readstyles[r])
+        readstyle = -1
+        while readstyle > len(readstyles) - 1 or readstyle <= 0:
+            try:
+                readstyle = int(input("What reading style do you prefer (enter the corresponding number) ?\n"))
+            except:
+                print("Please enter a number between 1 and " + str(len(readstyles) - 1) + ".")
+
+        #writing in the readers.txt
+        readersfile = open(reader_file, "a")
+        readersfile.write(pseudo + "," + str(gender) + "," + str(age) + "," + str(readstyle) + "\n")
+        readersfile.close()
+
+        display = pseudo + "'s profile was successfully added."
+    return display
+
+#=======================================================================================================================
 
 def display_reader(reader):
     Bool = False
@@ -62,13 +72,18 @@ def display_reader(reader):
         display = "Error : this profile does not exist."
     return display
 
+#=======================================================================================================================
+
 def edit_reader():
     profile = input('Which profile do you want to edit ?\n')
     while profile not in DisplayAllReaders().split(", "):
         profile = input('Which profile do you want to edit ?\n')
     choice = int(input("You are going to edit "+profile+"'s profile.\n"
                        "Which part do you want to modify?\n"
-                       "Enter : 1 for the pseudonym,\n        2 for the gender,\n        3 for the age,\n        4 for the reading style.\n"))
+                       "Enter : 1 for the pseudonym,\n"
+                       "        2 for the gender,\n"
+                       "        3 for the age,\n"
+                       "        4 for the reading style.\n"))
     while choice > 5 or choice < 0:
         choice = int(input("Please enter a number between 1 and 4 to modify the corresponding category.\n"
                            "1) the pseudonym\n"
@@ -125,7 +140,8 @@ def edit_reader():
                 verif = ""
                 while verif != "yes" and verif != "no":
                     verif = str(input("Are you sure you want to change " + profile + "'s parameter ?\n"
-                                      "The current information is '" + current_param + "' and you want to set it to '"+new_param+"'.\nType Yes or No : ")).lower()
+                                      "The current information is '" + current_param + "' and you want to set it to '"+new_param+"'.\n"
+                                      "Type Yes or No : ")).lower()
                 if verif == "yes":
                     txt += not_verified_txt + "\n"
                     display = profile + "'s profile successfully updated."
@@ -142,6 +158,8 @@ def edit_reader():
         display = "Error : this profile does not exist."
     return display
 
+#=======================================================================================================================
+
 def delete_reader(reader):
     txt = ""
     Bool = False
@@ -154,7 +172,8 @@ def delete_reader(reader):
     if Bool:
         verif = ""
         while verif != "yes" and verif != "no":
-            verif = str(input("Are you sure you want to permanently remove "+reader+" ?\nBe careful : This operation can NOT be undone.\nType Yes or No : ")).lower()
+            verif = str(input("Are you sure you want to permanently remove "+reader+" ?\n"
+                              "Be careful : This operation can NOT be undone.\nType Yes or No : ")).lower()
         if verif == "yes":
             readersfile = open(reader_file, "w")
             readersfile.write(txt)

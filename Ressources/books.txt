@@ -4,3 +4,7 @@
 4 - The Lord of the Rings
 5 - The Little Prince
 6 - Hello world
+7 - Pouah
+8 - Little nightmare
+9 - Salut
+10 - Lesgo

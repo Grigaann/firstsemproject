@@ -55,7 +55,8 @@ if __name__ == "__main__":
         elif n==2:
             print(add_book(input("Please type the name of the book you want to add : ")))
         elif n==3:
-            modify_title()
+            display_books()
+            print(modify_title(input("Please type the line of the book you want to update : ")))
         elif n==4:
             display_books()
             print(delete_book(input("Please type the line of the book you want to delete : ")))

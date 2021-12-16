@@ -2,7 +2,6 @@ ZSTRFG,3,2,7
 rrfdg,2,2,2
 jkk,2,2,2
 fds,2,1,4
-
 Ylan,1,2,1
 jonl,2,3,2
 Jean-Paul,2,2,2
