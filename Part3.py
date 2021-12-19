@@ -30,22 +30,16 @@ def suggest_book():
     return
 
 def matrix_creation():
-    list1=[]  #taking pseudos from readers and converting into a list
-    with open(reader_file, 'r') as file:
-        for line in file:
-            p = line.split(',')
-            list1.append(p[0])
 
-    #list2=[]
     list3=[]
-
     for j in range(lenght_books()):
-        list3.append([0]*len(list1))
+        list3.append([0]*list_readers()[1])
+
     return list3  #creating a matrix line=readers col=books
-print(matrix_creation())
 
-def matrix_update(matrixe,readers_pseudonym, book_title,grade_book):
 
-    matrixe[book_title][readers_pseudonym] = grade_book
-    return matrixe
+matrix= matrix_creation()
 
+def matrix_update(matrix,readers_pseudonym, book_title,grade_book):
+    matrix[book_title][readers_pseudonym] = grade_book
+    return matrix
