@@ -1,6 +1,7 @@
 # firstsemproject
 
 Members: Ylan HEBRON and Artemiy Smogunov
+        L1 INT2, PROMO 2026
 
 Step0:
 There is 5 different files with python code and 3 txt file
